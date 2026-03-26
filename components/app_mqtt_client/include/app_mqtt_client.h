@@ -1,4 +1,8 @@
-#include "jsmn.h"
 #include "mqtt_client.h"
 
-void func(void);
+#ifndef APP_MQTT_CLIENT_H
+#define APP_MQTT_CLIENT_H
+
+void mqtt_init();
+
+#endif
