@@ -1,6 +1,18 @@
 {
-    "C_Cpp.intelliSenseEngine": "default",
-    "idf.currentSetup": "c:\\Users\\felip\\esp\\v5.5.1\\esp-idf",
-    "idf.flashType": "JTAG",
-    "idf.portWin": "COM5"
+  "C_Cpp.intelliSenseEngine": "default",
+  "idf.currentSetup": "C:\\esp\\v6.0\\esp-idf",
+  "idf.flashType": "JTAG",
+  "idf.portWin": "detect",
+  "idf.openOcdConfigs": [
+    "board/esp32c5-builtin.cfg"
+  ],
+  "idf.customExtraVars": {
+    "IDF_TARGET": "esp32c5"
+  },
+  "clangd.path": "C:\\Espressif\\tools\\esp-clang\\esp-20.1.1_20250829\\esp-clang\\bin\\clangd.exe",
+  "clangd.arguments": [
+    "--background-index",
+    "--query-driver=**",
+    "--compile-commands-dir=c:\\Development\\IoTAmbientalHogar-Firmware\\build"
+  ]
 }

@@ -52,7 +52,7 @@ dependencies:
   idf:
     source:
       type: idf
-    version: 5.5.1
+    version: 6.0.0
 direct_dependencies:
 - esp-idf-lib/dht
 - esp-idf-lib/esp_idf_lib_helpers
@@ -60,4 +60,4 @@ direct_dependencies:
 - idf
 manifest_hash: a1e088a57accf144970ecb46774c3ff2a61f769c5eb5ce9f0c703668335d6045
 target: esp32c5
-version: 2.0.0
+version: 3.0.0
