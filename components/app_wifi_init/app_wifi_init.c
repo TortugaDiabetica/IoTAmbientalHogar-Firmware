@@ -13,11 +13,13 @@ static void wifi_event_handler(void *handler_args, esp_event_base_t event_base, 
         esp_wifi_connect();
     }
     else if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) {
+        xEventGroupClearBits(system_event_group, WIFI_CONNECTED_BIT);
         ESP_LOGW(TAG, "Reconectando...");
         esp_wifi_connect();
     }
     else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
         printf("WiFi conectado! Iniciando MQTT...\n");
+        xEventGroupSetBits(system_event_group, WIFI_CONNECTED_BIT);
         mqtt_init();
     }
 }
@@ -25,7 +27,7 @@ static void wifi_event_handler(void *handler_args, esp_event_base_t event_base, 
 void wifi_init(){
     // Iniciando memoria NVS por defecto:
     nvs_flash_init();
-
+    
     // Inicializando RED:
     esp_netif_init();
     esp_event_loop_create_default();

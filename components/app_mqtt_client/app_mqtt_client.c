@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include "app_mqtt_client.h"
 
-// MACROS
 /**
  * @brief - Configuración del cliente mqtt
  */
@@ -21,11 +20,11 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
     {
     case MQTT_EVENT_CONNECTED:
         printf("Conectado al broker raspberry!\n");
-
+        xEventGroupSetBits(system_event_group, MQTT_CONNECTED_BIT);
         esp_mqtt_client_publish(
             client,
-            "hidroponia/test",
-            "hola desde firmware :D",
+            "hidroponia/sensores",
+            "Te has conectado!",
             0,
             1,
             0
@@ -36,7 +35,8 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
         printf("Mensaje recibido\n");
         break;
     case MQTT_EVENT_DISCONNECTED:
-        printf("Desconectado del broker\n");
+        xEventGroupClearBits(system_event_group, MQTT_CONNECTED_BIT);
+        printf("Desconectado del broker...\n");
     break;
     default:
         break;
@@ -50,7 +50,7 @@ void mqtt_publish_sensor_data(const char *json_payload) {
         json_payload,
         0,
         1,
-        0
+        1
     );
 }
 
