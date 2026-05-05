@@ -2,8 +2,8 @@
 #include "app_wifi_init.h"
 
 // DEFINES
-#define SSID        "WiFi_Mesh-560103"
-#define PASSWORD    "HA97NzS7"
+#define SSID        "test"
+#define PASSWORD    "passtest"
 
 static const char *TAG = "WifiHogar";
 
